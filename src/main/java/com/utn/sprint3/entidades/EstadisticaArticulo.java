@@ -22,15 +22,19 @@ import java.util.Set;
 public class EstadisticaArticulo extends Base {
 
     @NotNull
+    @Column(name = "CantidadVendida")
     private Integer CantidadVendida;
 
     @NotNull
+    @Column(name = "Detalle")
     private String Detalle;
 
     @NotNull
+    @Column(name = "Fecha_Inicio")
     private Date Fecha_Inicio;
 
     @NotNull
+    @Column(name = "Fecha_Fin")
     private Date Fecha_Fin;
 
     @NotNull

@@ -20,6 +20,7 @@ import java.util.Collection;
 public class ArticuloInsumo extends Fecha{
 
     @NotNull
+    @Column(name = "denominacion")
     private String denominacion;
 
     @Column(name = "url_imagen")

@@ -44,4 +44,14 @@ public class FacturaServiceImpl extends BaseServiceImpl<Factura, Long> implement
             throw new Exception(e.getMessage());
         }
     }
+
+    @Override
+    public List<Factura> buscarPorIdPedido(Long filtro) throws Exception {
+        try {
+            List<Factura> facturas = facturaRepository.buscarPorIdPedido(filtro);
+            return facturas;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }

@@ -43,4 +43,24 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
             throw new Exception(e.getMessage());
         }
     }
+
+    @Override
+    public Double calcularTotalPorPedido(Long filtro) throws Exception {
+        try {
+            Double total = pedidoRepository.calcularTotalPorPedido(filtro);
+            return total;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Pedido> buscarPedidos(Long filtro) throws Exception {
+        try {
+            List<Pedido> pedidos = pedidoRepository.buscarPedidos(filtro);
+            return pedidos;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }

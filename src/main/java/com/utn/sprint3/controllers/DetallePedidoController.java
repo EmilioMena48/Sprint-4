@@ -32,4 +32,13 @@ public class DetallePedidoController extends BaseControllerImpl<DetallePedido, D
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
         }
     }
+
+    @GetMapping("/calcularTotal")
+    public ResponseEntity<?> calcularTotal(@RequestParam Long filtro){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.calcularTotal(filtro));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
+        }
+    }
 }

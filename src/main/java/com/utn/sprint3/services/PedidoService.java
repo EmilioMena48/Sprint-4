@@ -13,4 +13,10 @@ public interface PedidoService extends BaseService<Pedido, Long> {
     List<Pedido> searchJPQLnombrado(Double minTotal, Double maxTotal) throws Exception;
 
     Page<Pedido> searchJPQLnombrado(Double minTotal, Double maxTotal, Pageable pageable) throws Exception;
+
+
+    //calcular total pedido
+    Double calcularTotalPorPedido(Long filtro) throws Exception;
+
+    List<Pedido> buscarPedidos(Long filtro) throws Exception;
 }

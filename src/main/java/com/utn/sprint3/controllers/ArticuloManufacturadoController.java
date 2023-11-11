@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "api/v1/articulosManufacturado")
 public class ArticuloManufacturadoController extends BaseControllerImpl<ArticuloManufacturado, ArticuloManufacturadoServiceImpl>{
 
-    @GetMapping("/searchJPQLnombrado")
-    public ResponseEntity<?> searchNativo(@RequestParam String filtro){
+    @GetMapping("/searchNombreProducto")
+    public ResponseEntity<?> searchNombre(@RequestParam String filtro){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.searchJPQLnombrado(filtro));
         } catch (Exception e) {
@@ -28,6 +28,15 @@ public class ArticuloManufacturadoController extends BaseControllerImpl<Articulo
     public ResponseEntity<?> searchNativo(@RequestParam String filtro, Pageable pageable){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.searchJPQLnombrado(filtro, pageable));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
+        }
+    }
+
+    @GetMapping("/buscarPorRubro")
+    public ResponseEntity<?> searchRubro(@RequestParam String filtro){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchRubro(filtro));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
         }

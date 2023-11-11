@@ -32,4 +32,22 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
         }
     }
+
+    @GetMapping("/calcularTotalPedido")
+    public ResponseEntity<?> calcularTotalPedido(@RequestParam Long filtro){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.calcularTotalPorPedido(filtro));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
+        }
+    }
+
+    @GetMapping("/buscarPorIdCliente")
+    public ResponseEntity<?> buscarPorIdCliente(@RequestParam Long filtro){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.buscarPedidos(filtro));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
+        }
+    }
 }

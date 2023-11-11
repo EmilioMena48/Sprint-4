@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 
 @SpringBootApplication
 public class Sprint3Application {
-	@Autowired
+	/*@Autowired
 	ClienteRepository clienteRepository;
 	@Autowired
 	DomicilioRepository domicilioRepository;
@@ -42,13 +42,13 @@ public class Sprint3Application {
 	@Autowired
 	FacturaRepository facturaRepository;
 	@Autowired
-	DetalleFacturaRepository detalleFacturaRepository;
+	DetalleFacturaRepository detalleFacturaRepository;*/
 
 	public static void main(String[] args) {
 		SpringApplication.run(Sprint3Application.class, args);
 	}
-
-	/*@Bean
+/*
+	@Bean
 	CommandLineRunner init(ClienteRepository clienteRepository, DomicilioRepository domicilioRepository,
 						   EmpleadoRepository empleadoRepository, RubroArticuloRepository rubroArticuloRepository,
 						   UnidadMedidaRepository unidadMedidaRepository, ArticuloInsumoRepository articuloInsumoRepository,
@@ -70,6 +70,8 @@ public class Sprint3Application {
 			//cliente1.setFechaAlta(formato.parse("2023-10-26"));
 			cliente1.setUsername("juanperez");
 
+
+
 			//Creacion de un domicilio
 			Domicilio domicilio1 = new Domicilio();
 			domicilio1.setCalle("Dorrego");
@@ -79,6 +81,7 @@ public class Sprint3Application {
 			domicilio1.setNumeroDpto(5);
 			domicilio1.setPisoDpto(1);
 			//domicilio1.setFechaAlta(formato.parse("2023-09-26"));
+
 
 			//Agregando un domicilio a cliente
 			cliente1.agregarDomicilios(domicilio1);

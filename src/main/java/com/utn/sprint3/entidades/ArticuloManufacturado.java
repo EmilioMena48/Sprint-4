@@ -1,9 +1,7 @@
 package com.utn.sprint3.entidades;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -19,10 +17,11 @@ import java.math.BigDecimal;
 public class ArticuloManufacturado extends Fecha {
 
     @NotNull
+    @Column(name = "denominacion")
     private String denominacion;
 
     @NotNull
-    @Column(length = 1000)
+    @Column(name = "descripcion", length = 1000)
     private String descripcion;
 
     @NotNull
@@ -38,4 +37,9 @@ public class ArticuloManufacturado extends Fecha {
 
     @Column(length = 500, name = "url_imagen")
     private String urlImagen;
+
+    @NotNull
+    @ManyToOne()
+    @JoinColumn(name = "id_rubro_articulo")
+    private RubroArticulo rubroArticulo;
 }

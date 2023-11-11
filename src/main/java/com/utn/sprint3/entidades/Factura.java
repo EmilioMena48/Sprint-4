@@ -37,6 +37,7 @@ public class Factura extends Fecha {
     private String mpPaymentType;
 
     @NotNull
+    @Column(name = "formaPago")
     private FormaPago formaPago;
 
     @NotNull

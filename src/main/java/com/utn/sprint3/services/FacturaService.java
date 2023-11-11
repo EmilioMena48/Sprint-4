@@ -12,4 +12,8 @@ public interface FacturaService extends BaseService<Factura, Long> {
     List<Factura> searchJPQLnombrado(Double minTotal, Double maxTotal) throws Exception;
 
     Page<Factura> searchJPQLnombrado(Double minTotal, Double maxTotal, Pageable pageable) throws Exception;
+
+    // buscar por filtro id de pedido
+
+    List<Factura> buscarPorIdPedido(Long filtro) throws Exception;
 }

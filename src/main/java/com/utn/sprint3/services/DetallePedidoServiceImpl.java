@@ -43,4 +43,14 @@ public class DetallePedidoServiceImpl extends BaseServiceImpl<DetallePedido, Lon
             throw new Exception(e.getMessage());
         }
     }
+
+    @Override
+    public Double calcularTotal(Long filtro) throws Exception {
+        try {
+            Double total = detallePedidoRepository.calcularTotal(filtro);
+            return total;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }

@@ -13,4 +13,8 @@ public interface DetallePedidoService extends BaseService<DetallePedido, Long> {
     List<DetallePedido> searchJPQLnombrado(Double minTotal, Double maxTotal) throws Exception;
 
     Page<DetallePedido> searchJPQLnombrado(Double minTotal, Double maxTotal, Pageable pageable) throws Exception;
+
+
+    // calcular total de un producto
+    Double calcularTotal(Long filtro) throws Exception;
 }

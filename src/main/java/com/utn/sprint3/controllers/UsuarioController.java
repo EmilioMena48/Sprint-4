@@ -1,19 +1,18 @@
 package com.utn.sprint3.controllers;
 
-import com.utn.sprint3.entidades.ArticuloInsumo;
-import com.utn.sprint3.entidades.Cliente;
-import com.utn.sprint3.services.ArticuloInsumoServiceImpl;
-import com.utn.sprint3.services.ClienteServiceImpl;
+import com.utn.sprint3.entidades.Usuario;
+import com.utn.sprint3.services.UsuarioServiceImpl;
+import lombok.Builder;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+@Builder
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "api/v1/clientes")
-public class ClienteController extends BaseControllerImpl<Cliente, ClienteServiceImpl>{
+@RequestMapping(path = "api/v1/usuario")
+public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServiceImpl>{
 
     @GetMapping("/searchJPQLnombrado")
     public ResponseEntity<?> searchJPQLnombrado(@RequestParam String filtro){

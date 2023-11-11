@@ -20,4 +20,11 @@ public interface DetallePedidoRepository extends BaseRepository<DetallePedido, L
 
     @Query(value = "SELECT d FROM DetallePedido d WHERE d.cantidad BETWEEN :minTotal AND :maxTotal")
     Page<DetallePedido> search(@Param("minTotal") Double minTotal, @Param("maxTotal") Double maxTotal, Pageable pageable);
+
+
+    //calcular total de un producto
+    @Query(value = "SELECT d.cantidad * d.articuloManufacturado.precioVenta AS subTotal FROM DetallePedido d WHERE d.id = :filtro")
+    Double calcularTotal(@Param("filtro") Long filtro);
+
+
 }

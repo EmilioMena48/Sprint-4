@@ -1,9 +1,6 @@
 package com.utn.sprint3.services;
 
-import com.utn.sprint3.entidades.ArticuloInsumo;
-import com.utn.sprint3.entidades.Cliente;
 import com.utn.sprint3.entidades.Empleado;
-import com.utn.sprint3.repositorios.ArticuloInsumoRepository;
 import com.utn.sprint3.repositorios.BaseRepository;
 import com.utn.sprint3.repositorios.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;

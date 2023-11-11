@@ -32,4 +32,13 @@ public class FacturaController extends BaseControllerImpl<Factura, FacturaServic
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
         }
     }
+
+    @GetMapping("/buscarPorIdPedido")
+    public ResponseEntity<?> buscarPorIdPedido(@RequestParam Long filtro){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.buscarPorIdPedido(filtro));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
+        }
+    }
 }

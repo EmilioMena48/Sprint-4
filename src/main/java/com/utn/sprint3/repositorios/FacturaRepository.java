@@ -21,4 +21,8 @@ public interface FacturaRepository extends BaseRepository<Factura, Long> {
 
     @Query(value = "SELECT f FROM Factura f WHERE f.totalVenta BETWEEN :minTotal AND :maxTotal")
     Page<Factura> search(@Param("minTotal") Double minTotal, @Param("maxTotal") Double maxTotal, Pageable pageable);
+
+    // buscar factura por filtro id pedido para hu13
+    @Query(value = "SELECT f FROM Factura f WHERE f.pedido.id = :filtro")
+    List<Factura> buscarPorIdPedido(@Param("filtro") Long filtro);
 }

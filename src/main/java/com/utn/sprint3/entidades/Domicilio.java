@@ -19,18 +19,19 @@ import org.antlr.v4.runtime.misc.NotNull;
 public class Domicilio extends Fecha{
 
     @NotNull
-    @Column(length = 500)
+    @Column(name = "calle", length = 500)
     private String calle;
 
     @NotNull
-    @Column(precision = 5)
+    @Column(name = "numero",precision = 5)
     private Integer numero;
 
     @NotNull
-    @Column(precision = 4)
+    @Column(name = "codPostal")
     private Integer codigoPostal;
 
     @NotNull
+    @Column(name = "localiadad")
     private String localidad;
 
     @Column(name = "numero_vivienda")

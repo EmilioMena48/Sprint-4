@@ -4,5 +4,6 @@ public enum Rol {
     ADMINISTRADOR,
     CAJERO,
     DELIVERY,
-    COCINERO
+    COCINERO,
+    CLIENTE
 }

@@ -20,4 +20,14 @@ public interface PedidoRepository extends BaseRepository<Pedido, Long> {
 
     @Query(value = "SELECT p FROM Pedido p WHERE p.totalCosto BETWEEN :minTotal AND :maxTotal")
     Page<Pedido> search(@Param("minTotal") Double minTotal, @Param("maxTotal") Double maxTotal, Pageable pageable);
+
+
+    //total Pedido
+    @Query(value = "SELECT SUM(d.cantidad * d.articuloManufacturado.precioVenta) AS total FROM DetallePedido d WHERE d.pedido.id = :filtro")
+    Double calcularTotalPorPedido(@Param("filtro") Long filtro);
+
+    //buscar pedidos
+    @Query(value = "SELECT c.pedidos FROM Usuario c WHERE c.id = :filtro")
+    List<Pedido> buscarPedidos(@Param("filtro") Long filtro);
+
 }

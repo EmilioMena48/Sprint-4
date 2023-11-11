@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 public class DetallePedido extends Base {
 
     @NotNull
+    @Column(name = "cantidad")
     private Integer cantidad;
 
     @NotNull

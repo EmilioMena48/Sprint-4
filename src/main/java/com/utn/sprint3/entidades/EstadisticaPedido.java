@@ -1,8 +1,6 @@
 package com.utn.sprint3.entidades;
 
 
-import ch.qos.logback.core.net.server.Client;
-import com.utn.sprint3.entidades.Pedido;
 import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -38,6 +36,6 @@ public class EstadisticaPedido extends Base {
             inverseJoinColumns = @JoinColumn(name="FK_Cliente", nullable = false)
     )
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Cliente> Cliente = new HashSet<>();
+    private Set<Usuario> Cliente = new HashSet<>();
 
 }
