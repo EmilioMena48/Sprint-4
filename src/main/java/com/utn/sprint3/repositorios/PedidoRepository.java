@@ -34,7 +34,7 @@ public interface PedidoRepository extends BaseRepository<Pedido, Long> {
     //mostrar pedidos con estado 'PREPARACION' para el cocinero
 
     @Query(value = "SELECT p FROM Pedido p WHERE p.estado = :estadoPedido")
-    List<Pedido> buscarPedidosaPreparar(@Param("EstadoPedido")EstadoPedido estadoPedido);
+    List<Pedido> buscarPedidosaPreparar(@Param("estadoPedido")EstadoPedido estadoPedido);
 
 
 
