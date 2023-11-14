@@ -1,18 +1,22 @@
 package com.utn.sprint3.Auth;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:5175")
 public class AuthController {
 
     private final AuthService authService;
+
+    @GetMapping("/hola")
+    public String hola(){
+        return "hola";
+    }
 
     @PostMapping(value = "login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request)
@@ -26,6 +30,8 @@ public class AuthController {
         return ResponseEntity.ok(authService.register(request));
     }
 }
+
+
 
    /* @PostMapping("/register/admin")
     public ResponseEntity<AuthResponse> registerAdmin(@RequestBody RegisterRequestAdmin request) {

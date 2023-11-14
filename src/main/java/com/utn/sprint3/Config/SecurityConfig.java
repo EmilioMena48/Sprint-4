@@ -23,6 +23,8 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final AuthenticationProvider authProvider;
 
+
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
@@ -38,8 +40,13 @@ public class SecurityConfig {
                                         .requestMatchers(PathRequest.toH2Console()).permitAll()
 
                                         //Autorizacion de acceso a la url:
-                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/empleados/nombre/**")).hasAuthority("ADMINISTRADOR")
-                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/clientes/**")).hasAnyAuthority("CLIENTE", "ADMINISTRADOR")
+                                       // .requestMatchers(new AntPathRequestMatcher("/api/v1/empleados/**")).hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/empleados/**")).permitAll()
+                                     //   .requestMatchers(new AntPathRequestMatcher("/api/v1/empleados/buscarEmpleados/**")).hasAuthority("ADMINISTRADOR")
+
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/usuario/**")).hasAnyAuthority("CLIENTE", "ADMINISTRADOR")
+                                     //   .requestMatchers(new AntPathRequestMatcher("/api/admin/**")).hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/admin/**")).permitAll()
 
                         //.anyRequest().authenticated()
                 )

@@ -49,6 +49,26 @@ public class AuthService {
                 .build();
     }
 
+
+    public AuthResponse crearEmpleado(RegisterRequest request) {
+        Usuario empleado = new Usuario();
+        empleado.setUsername(request.getUsername());
+        empleado.setPassword(passwordEncoder.encode(request.getPassword()));
+        empleado.setNombre(request.getNombre());
+        empleado.setApellido(request.getApellido());
+        empleado.setEmail(request.getEmail());
+        empleado.setTelefono(request.getTelefono());
+      //  empleado.setFechaNacimiento(request.getFechaNacimiento());
+        empleado.setRol(request.getRol());
+
+        // Guarda el nuevo usuario en la base de datos
+         usuarioRepository.save(empleado);
+
+        return AuthResponse.builder()
+                .token(jwtService.getToken(empleado))
+                .build();
+    }
+
     // Método para generar automáticamente al administrador si no existe
     @PostConstruct
     public void inicializar() {
