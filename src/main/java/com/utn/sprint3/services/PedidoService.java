@@ -21,5 +21,5 @@ public interface PedidoService extends BaseService<Pedido, Long> {
     List<Pedido> buscarPedidos(Long filtro) throws Exception;
 
     //hu17
-    List<Pedido> buscarPedidosaPreparar(String filtro) throws Exception;
+    List<Pedido> buscarPedidosaPreparar() throws Exception;
 }

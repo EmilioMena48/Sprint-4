@@ -43,7 +43,7 @@ public class DetallePedidoController extends BaseControllerImpl<DetallePedido, D
     }
 
     @GetMapping("/buscarDetalleEspecifico")
-    public ResponseEntity<?> buscarDetalleEspecifico(@RequestParam String filtro){
+    public ResponseEntity<?> buscarDetalleEspecifico(@RequestParam Long filtro){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.buscarDetalleEspecifico(filtro));
         } catch (Exception e) {

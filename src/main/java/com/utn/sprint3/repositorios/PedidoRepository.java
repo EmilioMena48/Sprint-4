@@ -1,5 +1,6 @@
 package com.utn.sprint3.repositorios;
 
+import com.utn.sprint3.Enumeraciones.EstadoPedido;
 import com.utn.sprint3.entidades.Factura;
 import com.utn.sprint3.entidades.Pedido;
 import org.springframework.data.domain.Page;
@@ -32,8 +33,8 @@ public interface PedidoRepository extends BaseRepository<Pedido, Long> {
 
     //mostrar pedidos con estado 'PREPARACION' para el cocinero
 
-    @Query(value = "SELECT p FROM Pedido p WHERE p.estado LIKE %:filtro%")
-    List<Pedido> buscarPedidosaPreparar(@Param("filtro") String filtro);
+    @Query(value = "SELECT p FROM Pedido p WHERE p.estado = :estadoPedido")
+    List<Pedido> buscarPedidosaPreparar(@Param("EstadoPedido")EstadoPedido estadoPedido);
 
 
 

@@ -56,7 +56,7 @@ public class DetallePedidoServiceImpl extends BaseServiceImpl<DetallePedido, Lon
 
 
     @Override
-    public List<DetallePedido> buscarDetalleEspecifico(String filtro) throws Exception {
+    public List<DetallePedido> buscarDetalleEspecifico(Long filtro) throws Exception {
         try {
             List<DetallePedido> detallePedidos = detallePedidoRepository.buscarDetalleEspecifico(filtro);
             return detallePedidos;

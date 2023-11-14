@@ -1,5 +1,6 @@
 package com.utn.sprint3.services;
 
+import com.utn.sprint3.Enumeraciones.EstadoPedido;
 import com.utn.sprint3.entidades.ArticuloInsumo;
 import com.utn.sprint3.entidades.Factura;
 import com.utn.sprint3.entidades.Pedido;
@@ -58,6 +59,17 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
     public List<Pedido> buscarPedidos(Long filtro) throws Exception {
         try {
             List<Pedido> pedidos = pedidoRepository.buscarPedidos(filtro);
+            return pedidos;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Pedido> buscarPedidosaPreparar() throws Exception {
+        try {
+            EstadoPedido estadoPedido = EstadoPedido.PREPARACION;
+            List<Pedido> pedidos = pedidoRepository.buscarPedidosaPreparar(estadoPedido);
             return pedidos;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
