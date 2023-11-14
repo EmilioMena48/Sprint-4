@@ -1,5 +1,7 @@
 package com.utn.sprint3.entidades;
 
+import com.utn.sprint3.Enumeraciones.EstadoRubro;
+import com.utn.sprint3.Enumeraciones.TipoRubro;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +30,12 @@ public class RubroArticulo extends Fecha {
 
     @NotNull
     private String denominacion;
+
+    @NotNull
+    private EstadoRubro estadoRubro;
+
+    @NotNull
+    private TipoRubro tipoRubro;
 
     public RubroArticulo(String denominacion, RubroArticulo rubroPadre) {
         this.denominacion = denominacion;

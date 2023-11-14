@@ -50,4 +50,13 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
         }
     }
+
+    @GetMapping("/buscarPedidosaPreparar")
+    public ResponseEntity<?> buscarPedidosaPreparar(@RequestParam String filtro){
+        try {
+            return  ResponseEntity.status(HttpStatus.OK).body(servicio.buscarPedidosaPreparar(filtro));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
+        }
+    }
 }

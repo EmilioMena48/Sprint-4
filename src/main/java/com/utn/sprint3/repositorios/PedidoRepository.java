@@ -30,4 +30,12 @@ public interface PedidoRepository extends BaseRepository<Pedido, Long> {
     @Query(value = "SELECT c.pedidos FROM Usuario c WHERE c.id = :filtro")
     List<Pedido> buscarPedidos(@Param("filtro") Long filtro);
 
+    //mostrar pedidos con estado 'PREPARACION' para el cocinero
+
+    @Query(value = "SELECT p FROM Pedido p WHERE p.estado LIKE %:filtro%")
+    List<Pedido> buscarPedidosaPreparar(@Param("filtro") String filtro);
+
+
+
+
 }

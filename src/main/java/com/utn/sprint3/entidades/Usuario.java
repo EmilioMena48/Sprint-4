@@ -42,9 +42,9 @@ public class Usuario extends Persona implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "fecha_nac")
+   /* @Column(name = "fecha_nac")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaNacimiento;
+    private Date fechaNacimiento;*/
 
     @NotNull
     @Column(name = "username", nullable = false)
@@ -65,6 +65,7 @@ public class Usuario extends Persona implements UserDetails {
     @JoinColumn(name = "id_cliente")
     // @Builder.Default
     private List<Domicilio> domicilios = new ArrayList<>();
+
 
     public void agregarDomicilios(Domicilio d) {
         domicilios.add(d);

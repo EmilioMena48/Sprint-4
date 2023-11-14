@@ -1,12 +1,14 @@
 package com.utn.sprint3.Auth;
 
 import com.utn.sprint3.Enumeraciones.Rol;
+import com.utn.sprint3.entidades.Domicilio;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -19,7 +21,8 @@ public class RegisterRequest {
     String apellido;
     String telefono;
     String email;
-    Date fechaNacimiento;
     Rol rol;
-
+  /*  String calle;
+    Integer numero;*/
+   // List<Domicilio> domicilios;
 }

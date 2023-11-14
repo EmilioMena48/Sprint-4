@@ -43,7 +43,7 @@ public class SecurityConfig {
                                        // .requestMatchers(new AntPathRequestMatcher("/api/v1/empleados/**")).hasAuthority("ADMINISTRADOR")
                                         .requestMatchers(new AntPathRequestMatcher("/api/v1/empleados/**")).permitAll()
                                      //   .requestMatchers(new AntPathRequestMatcher("/api/v1/empleados/buscarEmpleados/**")).hasAuthority("ADMINISTRADOR")
-
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/domicilios/**")).permitAll()
                                         .requestMatchers(new AntPathRequestMatcher("/api/v1/usuario/**")).hasAnyAuthority("CLIENTE", "ADMINISTRADOR")
                                      //   .requestMatchers(new AntPathRequestMatcher("/api/admin/**")).hasAuthority("ADMINISTRADOR")
                                         .requestMatchers(new AntPathRequestMatcher("/api/admin/**")).permitAll()

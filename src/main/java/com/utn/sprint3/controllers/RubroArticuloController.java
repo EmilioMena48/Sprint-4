@@ -31,4 +31,13 @@ public class RubroArticuloController extends BaseControllerImpl<RubroArticulo, R
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
         }
     }
+
+    @GetMapping("/searchRubroInsumo")
+    public ResponseEntity<?> searchRubro(){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchRubro());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
+        }
+    }
 }

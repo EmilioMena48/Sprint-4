@@ -17,4 +17,8 @@ public interface DetallePedidoService extends BaseService<DetallePedido, Long> {
 
     // calcular total de un producto
     Double calcularTotal(Long filtro) throws Exception;
+
+
+    // Buscar Detalle de factura especifico
+    List<DetallePedido> buscarDetalleEspecifico(String filtro) throws  Exception;
 }

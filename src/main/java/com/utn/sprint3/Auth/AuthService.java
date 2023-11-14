@@ -3,6 +3,7 @@ package com.utn.sprint3.Auth;
 
 import com.utn.sprint3.Enumeraciones.Rol;
 import com.utn.sprint3.Jwt.JwtService;
+import com.utn.sprint3.entidades.Domicilio;
 import com.utn.sprint3.entidades.Usuario;
 import com.utn.sprint3.repositorios.*;
 import jakarta.annotation.PostConstruct;
@@ -12,6 +13,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -37,10 +41,21 @@ public class AuthService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setNombre(request.getNombre());
         user.setApellido(request.getApellido());
-        user.setFechaNacimiento(request.getFechaNacimiento());
         user.setEmail(request.getEmail());
         user.setTelefono(request.getTelefono());
         user.setRol(Rol.CLIENTE);
+
+
+
+      /*  List<Domicilio> domicilios = new ArrayList<>();*/
+     /*   Domicilio domicilio = new Domicilio();
+        domicilio.setCalle(request.getCalle());
+        domicilio.setNumero(request.getNumero());
+     /*   domicilios.add(domicilio);
+
+        user.setDomicilios(domicilios);*/
+
+
 
         usuarioRepository.save(user);
 

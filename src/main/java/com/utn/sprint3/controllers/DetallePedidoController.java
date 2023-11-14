@@ -41,4 +41,13 @@ public class DetallePedidoController extends BaseControllerImpl<DetallePedido, D
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
         }
     }
+
+    @GetMapping("/buscarDetalleEspecifico")
+    public ResponseEntity<?> buscarDetalleEspecifico(@RequestParam String filtro){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.buscarDetalleEspecifico(filtro));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
+        }
+    }
 }

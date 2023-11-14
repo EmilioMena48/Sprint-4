@@ -19,4 +19,7 @@ public interface PedidoService extends BaseService<Pedido, Long> {
     Double calcularTotalPorPedido(Long filtro) throws Exception;
 
     List<Pedido> buscarPedidos(Long filtro) throws Exception;
+
+    //hu17
+    List<Pedido> buscarPedidosaPreparar(String filtro) throws Exception;
 }

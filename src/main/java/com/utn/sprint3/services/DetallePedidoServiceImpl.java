@@ -53,4 +53,15 @@ public class DetallePedidoServiceImpl extends BaseServiceImpl<DetallePedido, Lon
             throw new Exception(e.getMessage());
         }
     }
+
+
+    @Override
+    public List<DetallePedido> buscarDetalleEspecifico(String filtro) throws Exception {
+        try {
+            List<DetallePedido> detallePedidos = detallePedidoRepository.buscarDetalleEspecifico(filtro);
+            return detallePedidos;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }
