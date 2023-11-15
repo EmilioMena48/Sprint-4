@@ -20,6 +20,6 @@ public interface UsuarioService extends BaseService<Usuario, Long> {
     List<Rol> roles = Arrays.asList(Rol.COCINERO, Rol.DELIVERY, Rol.CAJERO);
     List<UsuarioDTO> findByRoles(List<Rol> roles) throws Exception;
 
-
+     List<RankingDTO> searchClientePedido() throws Exception;
 
 }
