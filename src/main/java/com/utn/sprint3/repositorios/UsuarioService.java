@@ -1,6 +1,7 @@
 package com.utn.sprint3.services;
 
 import com.utn.sprint3.Enumeraciones.Rol;
+import com.utn.sprint3.entidades.RankingDTO;
 import com.utn.sprint3.entidades.Usuario;
 import com.utn.sprint3.entidades.UsuarioDTO;
 import org.springframework.data.domain.Page;
@@ -20,6 +21,7 @@ public interface UsuarioService extends BaseService<Usuario, Long> {
     List<Rol> roles = Arrays.asList(Rol.COCINERO, Rol.DELIVERY, Rol.CAJERO);
     List<UsuarioDTO> findByRoles(List<Rol> roles) throws Exception;
 
-     List<RankingDTO> searchClientePedido() throws Exception;
+    List<RankingDTO> searchClientePedido() throws Exception;
+
 
 }
