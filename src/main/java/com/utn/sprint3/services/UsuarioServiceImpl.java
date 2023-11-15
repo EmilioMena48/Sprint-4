@@ -78,7 +78,23 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
             throw new Exception(e.getMessage());
         }
     }
+        public List<RankingDTO> searchClientePedido() throws Exception {
+        try {
+            List<Usuario> entities = usuarioRepository.findAll();
+            List<RankingDTO> dtos = new ArrayList<>();
 
+            RankingDTO auxdto = new RankingDTO();
+            for (Usuario usuario : entities) {
+                auxdto.setId(usuario.getId());
+                auxdto.setUsername(usuario.getUsername());
+                auxdto.setPedido(usuario.getPedidos().size());
+                dtos.add(auxdto);
+
+            }
+            return dtos;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
 
 
 }
