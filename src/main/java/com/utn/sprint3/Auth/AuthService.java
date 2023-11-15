@@ -76,7 +76,7 @@ public class AuthService {
       //  empleado.setFechaNacimiento(request.getFechaNacimiento());
         empleado.setRol(request.getRol());
 
-        // Guarda el nuevo usuario en la base de datos
+
          usuarioRepository.save(empleado);
 
         return AuthResponse.builder()
@@ -84,7 +84,7 @@ public class AuthService {
                 .build();
     }
 
-    // Método para generar automáticamente al administrador si no existe
+
     @PostConstruct
     public void inicializar() {
         if (!usuarioRepository.existsByUsername("admin")) {

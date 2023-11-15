@@ -22,6 +22,5 @@ public class UsuarioDTO implements Serializable {
     String apellido;
     String telefono;
     String email;
-  //  Date fechaNacimiento;
     Rol rol;
 }

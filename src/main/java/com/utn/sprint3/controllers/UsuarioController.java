@@ -13,7 +13,7 @@ import java.util.List;
 
 @Builder
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping(path = "api/v1/usuario")
 public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServiceImpl>{
 

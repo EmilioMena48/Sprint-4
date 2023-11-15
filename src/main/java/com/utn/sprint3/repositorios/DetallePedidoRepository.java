@@ -26,7 +26,7 @@ public interface DetallePedidoRepository extends BaseRepository<DetallePedido, L
     @Query(value = "SELECT d.cantidad * d.articuloManufacturado.precioVenta AS subTotal FROM DetallePedido d WHERE d.id = :filtro")
     Double calcularTotal(@Param("filtro") Long filtro);
 
-    //Buscar el detalle de un pedido especifico
+    //Buscar el detalle de un pedido especifico por id
     @Query(value = "SELECT d FROM DetallePedido d WHERE d.pedido.id = :filtro")
     List<DetallePedido> buscarDetalleEspecifico(@Param("filtro") Long filtro);
 

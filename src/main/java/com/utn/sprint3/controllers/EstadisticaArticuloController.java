@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping(path = "api/v1/EstadisticasAriticulo")
 public class EstadisticaArticuloController extends BaseControllerImpl<EstadisticaArticulo, EstadisticaArticuloServiceImpl>{
 }
