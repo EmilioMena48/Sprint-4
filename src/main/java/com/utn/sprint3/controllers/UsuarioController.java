@@ -35,5 +35,13 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
         }
     }
 
+    @GetMapping("/usuarios")
+    public ResponseEntity<?> searchClientePedido() {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchClientePedido());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
+        }
+    }
 
 }
