@@ -1,6 +1,5 @@
 package com.utn.sprint3.controllers;
 
-import com.utn.sprint3.Enumeraciones.Rol;
 import com.utn.sprint3.entidades.Usuario;
 import com.utn.sprint3.services.UsuarioServiceImpl;
 import lombok.Builder;
@@ -8,8 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Builder
 @RestController

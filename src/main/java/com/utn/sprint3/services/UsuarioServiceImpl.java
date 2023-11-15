@@ -1,6 +1,7 @@
 package com.utn.sprint3.services;
 
 import com.utn.sprint3.Enumeraciones.Rol;
+import com.utn.sprint3.entidades.RankingDTO;
 import com.utn.sprint3.entidades.Usuario;
 import com.utn.sprint3.entidades.UsuarioDTO;
 import com.utn.sprint3.repositorios.BaseRepository;
@@ -79,22 +80,22 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
         }
     }
         public List<RankingDTO> searchClientePedido() throws Exception {
-        try {
-            List<Usuario> entities = usuarioRepository.findAll();
-            List<RankingDTO> dtos = new ArrayList<>();
+            try {
+                List<Usuario> entities = usuarioRepository.findAll();
+                List<RankingDTO> dtos = new ArrayList<>();
 
-            RankingDTO auxdto = new RankingDTO();
-            for (Usuario usuario : entities) {
-                auxdto.setId(usuario.getId());
-                auxdto.setUsername(usuario.getUsername());
-                auxdto.setPedido(usuario.getPedidos().size());
-                dtos.add(auxdto);
+                RankingDTO auxdto = new RankingDTO();
+                for (Usuario usuario : entities) {
+                    auxdto.setId(usuario.getId());
+                    auxdto.setUsername(usuario.getUsername());
+                    auxdto.setPedido(usuario.getPedidos().size());
+                    dtos.add(auxdto);
 
+                }
+                return dtos;
+            } catch (Exception e) {
+                throw new Exception(e.getMessage());
             }
-            return dtos;
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
+
         }
-
-
 }

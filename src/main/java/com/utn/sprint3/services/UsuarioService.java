@@ -1,6 +1,7 @@
 package com.utn.sprint3.services;
 
 import com.utn.sprint3.Enumeraciones.Rol;
+import com.utn.sprint3.entidades.RankingDTO;
 import com.utn.sprint3.entidades.Usuario;
 import com.utn.sprint3.entidades.UsuarioDTO;
 import org.springframework.data.domain.Page;
