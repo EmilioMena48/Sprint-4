@@ -26,17 +26,21 @@ public class Domicilio extends Fecha{
     @Column(name = "numero",precision = 5)
     private Integer numero;
 
-    @NotNull
+   @NotNull
     @Column(name = "codPostal")
     private Integer codigoPostal;
 
     @NotNull
-    @Column(name = "localiadad")
+    @Column(name = "localidad")
     private String localidad;
 
+    @NotNull
+    @Column(name = "departamento")
+    private String departamento;
+
     @Column(name = "numero_vivienda")
-    private Integer numeroDpto;
+    private Integer numeroVivienda;
 
     @Column(name = "piso_vivienda")
-    private Integer pisoDpto;
+    private String pisoDto;
 }

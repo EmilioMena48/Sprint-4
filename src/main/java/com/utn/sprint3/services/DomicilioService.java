@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface DomicilioService extends BaseService<Domicilio, Long> {
 
-    List<Domicilio> searchJPQLnombrado(String filtro) throws Exception;
+   /* List<Domicilio> searchJPQLnombrado(String filtro) throws Exception;
 
-    Page<Domicilio> searchJPQLnombrado(String filtro, Pageable pageable) throws Exception;
+    Page<Domicilio> searchJPQLnombrado(String filtro, Pageable pageable) throws Exception;*/
 }

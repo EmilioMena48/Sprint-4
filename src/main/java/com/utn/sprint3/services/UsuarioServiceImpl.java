@@ -1,9 +1,7 @@
 package com.utn.sprint3.services;
 
 import com.utn.sprint3.Enumeraciones.Rol;
-import com.utn.sprint3.entidades.RankingDTO;
-import com.utn.sprint3.entidades.Usuario;
-import com.utn.sprint3.entidades.UsuarioDTO;
+import com.utn.sprint3.entidades.*;
 import com.utn.sprint3.repositorios.BaseRepository;
 import com.utn.sprint3.repositorios.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implements UsuarioService {
@@ -49,36 +44,51 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
     }
 
     @Override
-    public List<UsuarioDTO> findByRoles(List<Rol> roles) throws Exception {
+    public List<EmpleadoDTO> findByRoles(List<Rol> roles) throws Exception {
         try {
             List<Usuario> empleados = usuarioRepository.findByRoles(roles);
-            List<UsuarioDTO> usuariosDTO = new ArrayList<>();
+            List<EmpleadoDTO> empleadoDTOS = new ArrayList<>();
 
 
-            for (Usuario usuarioDB : empleados) {
 
-              /* SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-                Date fechaNacimiento = dateFormat.parse(usuarioDB.getFechaNacimiento());*/
+            for (Usuario empleadoDB : empleados) {
 
-                UsuarioDTO usuarioDTO = new UsuarioDTO(
-                        usuarioDB.getId(),
-                        usuarioDB.getUsername(),
-                        usuarioDB.getPassword(),
-                        usuarioDB.getNombre(),
-                        usuarioDB.getApellido(),
-                        usuarioDB.getTelefono(),
-                        usuarioDB.getEmail(),
-                        //usuarioDB.getFechaNacimiento(),
-                        usuarioDB.getRol()
+                Domicilio domicilio = empleadoDB.getDomicilio();
+                DomicilioDTO domicilioDTO = new DomicilioDTO(
+                        domicilio.getId(),
+                        domicilio.getCalle(),
+                        domicilio.getNumero(),
+                        domicilio.getCodigoPostal(),
+                        domicilio.getLocalidad(),
+                        domicilio.getDepartamento(),
+                        domicilio.getNumeroVivienda(),
+                        domicilio.getPisoDto()
                 );
-                usuariosDTO.add(usuarioDTO);
+
+                EmpleadoDTO empleadoDTO = new EmpleadoDTO(
+                        empleadoDB.getFechaAlta(),
+                        empleadoDB.getId(),
+                        empleadoDB.getUsername(),
+                        empleadoDB.getNombre(),
+                        empleadoDB.getApellido(),
+                        empleadoDB.getTelefono(),
+                        empleadoDB.getEmail(),
+                        empleadoDB.getRol(),
+                        domicilioDTO
+                );
+                empleadoDTOS.add(empleadoDTO);
             }
 
-            return usuariosDTO;
+            return empleadoDTOS;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
+
+
+
+
+
         public List<RankingDTO> searchClientePedido() throws Exception {
             try {
                 List<Usuario> entities = usuarioRepository.findAll();

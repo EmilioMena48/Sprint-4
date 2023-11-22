@@ -2,7 +2,7 @@ package com.utn.sprint3.controllers;
 
 import com.utn.sprint3.Enumeraciones.Rol;
 import com.utn.sprint3.entidades.Usuario;
-import com.utn.sprint3.entidades.UsuarioDTO;
+import com.utn.sprint3.entidades.EmpleadoDTO;
 import com.utn.sprint3.services.UsuarioServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -22,10 +22,7 @@ import java.util.List;
 public class EmpleadoController extends BaseControllerImpl<Usuario, UsuarioServiceImpl>{
 
 
-    @GetMapping("/hola")
-    public String hola(){
-       return "hola";
-    }
+
 
     @GetMapping("/nombre")
     public ResponseEntity<?> searchJPQLnombrado(@RequestParam String filtro){
@@ -47,10 +44,10 @@ public class EmpleadoController extends BaseControllerImpl<Usuario, UsuarioServi
 
     //hu4
     @GetMapping("/buscarEmpleados")
-    public ResponseEntity<List<UsuarioDTO>> buscarPorRoles() {
+    public ResponseEntity<List<EmpleadoDTO>> buscarPorRoles() {
         try {
             List<Rol> roles = Arrays.asList(Rol.COCINERO, Rol.DELIVERY, Rol.CAJERO);
-            List<UsuarioDTO> usuariosDTO = servicio.findByRoles(roles);
+            List<EmpleadoDTO> usuariosDTO = servicio.findByRoles(roles);
             return new ResponseEntity<>(usuariosDTO, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

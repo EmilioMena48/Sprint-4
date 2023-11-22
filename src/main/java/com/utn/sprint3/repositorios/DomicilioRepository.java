@@ -14,9 +14,9 @@ import java.util.List;
 @Repository
 public interface DomicilioRepository extends BaseRepository<Domicilio, Long> {
 
-    @Query(value = "SELECT d FROM Domicilio d WHERE d.localidad LIKE %:filtro%")
+   /* @Query(value = "SELECT d FROM Domicilio d WHERE d.localidad LIKE %:filtro%")
     List<Domicilio> search(@Param("filtro") String filtro);
 
     @Query(value = "SELECT d FROM Domicilio d WHERE d.localidad LIKE %:filtro%")
-    Page<Domicilio> search(@Param("filtro") String filtro, Pageable pageable);
+    Page<Domicilio> search(@Param("filtro") String filtro, Pageable pageable);*/
 }

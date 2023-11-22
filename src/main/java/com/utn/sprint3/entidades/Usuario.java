@@ -42,12 +42,9 @@ public class Usuario extends Persona implements UserDetails {
     @Column(name = "password")
     private String password;
 
-   /* @Column(name = "fecha_nac")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaNacimiento;*/
 
     @NotNull
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
 
@@ -60,18 +57,26 @@ public class Usuario extends Persona implements UserDetails {
         pedidos.add(p);
     }
 
-    @NotNull
+    /*@NotNull
     @OneToMany
     @JoinColumn(name = "id_cliente")
     // @Builder.Default
-    private List<Domicilio> domicilios = new ArrayList<>();
+    private List<Domicilio> domicilios = new ArrayList<>();*/
+
+    @NotNull
+    @OneToOne
+    @JoinColumn(name = "id_dom")
+    // @Builder.Default
+    Domicilio domicilio;
 
 
-    public void agregarDomicilios(Domicilio d) {
+
+
+    /*public void agregarDomicilios(Domicilio d) {
         domicilios.add(d);
-    }
+    }*/
 
-    public void mostrarDomicilios(){
+    /*public void mostrarDomicilios(){
         System.out.println("Domicilios de " + getNombre() + " " + getApellido() + ":");
         int counter = 0;
         for (Domicilio domicilio : domicilios) {
@@ -79,7 +84,7 @@ public class Usuario extends Persona implements UserDetails {
             System.out.println("\nDomicilio "+counter+"\n\tCalle: " + domicilio.getCalle() + ", Número: " + domicilio.getNumero());
         }
         System.out.println("----------------------------------------");
-    }
+    }*/
 
     public void mostrarPedidos() {
         System.out.println("Pedidos de " + getNombre() + " " + getApellido() + ":");
@@ -90,6 +95,7 @@ public class Usuario extends Persona implements UserDetails {
         }
         System.out.println("----------------------------------------");
     }
+
 
 
     @Override
@@ -111,6 +117,12 @@ public class Usuario extends Persona implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+
+    public Long getUserId() {
+
+        return getId();
     }
 
 }

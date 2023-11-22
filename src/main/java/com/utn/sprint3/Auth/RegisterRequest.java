@@ -22,7 +22,11 @@ public class RegisterRequest {
     String telefono;
     String email;
     Rol rol;
-  /*  String calle;
-    Integer numero;*/
-   // List<Domicilio> domicilios;
+    String calle;
+    Integer numero;
+    Integer codigoPostal;
+    String localidad;
+    String departamento;
+    Integer numeroVivienda;
+    String pisoDto;
 }

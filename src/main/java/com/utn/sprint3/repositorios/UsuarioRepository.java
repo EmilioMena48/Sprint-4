@@ -19,6 +19,8 @@ public interface UsuarioRepository extends BaseRepository<Usuario, Long>{
 
     boolean existsByUsername(String username);
 
+    Usuario findById(long id);
+
     @Query(value = "SELECT c FROM Usuario c WHERE c.nombre LIKE %:filtro% OR c.apellido LIKE %:filtro%")
     List<Usuario> search(@Param("filtro") String filtro);
 
@@ -29,9 +31,9 @@ public interface UsuarioRepository extends BaseRepository<Usuario, Long>{
     @Query("SELECT u FROM Usuario u WHERE u.rol IN (:roles)")
     List<Usuario> findByRoles(@Param("roles") List<Rol> roles);
 
-    //Metodo para que empleado edite sus datos
+    @Query("SELECT u FROM Usuario u WHERE u.rol IN (:roles)")
+    Page<Usuario> findByRolesP(@Param("roles") List<Rol> roles,  Pageable pageable);
 
-    Usuario findById(long id);
 
 
 

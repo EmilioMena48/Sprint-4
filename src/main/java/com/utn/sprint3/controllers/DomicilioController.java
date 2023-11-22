@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "api/v1/domicilios")
 public class DomicilioController extends BaseControllerImpl<Domicilio, DomicilioServiceImpl>{
 
-    @GetMapping("/searchJPQLnombrado")
+    /*@GetMapping("/searchJPQLnombrado")
     public ResponseEntity<?> searchNativo(@RequestParam String filtro){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.searchJPQLnombrado(filtro));
@@ -31,5 +31,5 @@ public class DomicilioController extends BaseControllerImpl<Domicilio, Domicilio
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"Error\":\"Error, por favor intente mas tarde\"}");
         }
-    }
+    }*/
 }

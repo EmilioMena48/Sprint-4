@@ -11,17 +11,20 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class AuthService {
 
     private final UsuarioRepository usuarioRepository;
+    private final DomicilioRepository domicilioRepository;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
@@ -36,6 +39,23 @@ public class AuthService {
     }
 
     public AuthResponse register(RegisterRequest request) {
+
+
+        Domicilio domicilio = new Domicilio();
+
+        domicilio.setCalle(request.getCalle());
+        domicilio.setNumero(request.getNumero());
+        domicilio.setCodigoPostal(request.getCodigoPostal());
+        domicilio.setLocalidad(request.getLocalidad());
+        domicilio.setDepartamento(request.getDepartamento());
+        domicilio.setNumeroVivienda(request.getNumeroVivienda());
+        domicilio.setPisoDto(request.getPisoDto());
+
+
+
+        domicilioRepository.save(domicilio);
+
+
         Usuario user = new Usuario();
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
@@ -46,15 +66,7 @@ public class AuthService {
         user.setRol(Rol.CLIENTE);
 
 
-
-      /*  List<Domicilio> domicilios = new ArrayList<>();*/
-     /*   Domicilio domicilio = new Domicilio();
-        domicilio.setCalle(request.getCalle());
-        domicilio.setNumero(request.getNumero());
-     /*   domicilios.add(domicilio);
-
-        user.setDomicilios(domicilios);*/
-
+        user.setDomicilio(domicilio);
 
 
         usuarioRepository.save(user);
@@ -65,7 +77,23 @@ public class AuthService {
     }
 
 
+
     public AuthResponse crearEmpleado(RegisterRequest request) {
+
+        Domicilio domicilio = new Domicilio();
+
+        domicilio.setCalle(request.getCalle());
+        domicilio.setNumero(request.getNumero());
+        domicilio.setCodigoPostal(request.getCodigoPostal());
+        domicilio.setLocalidad(request.getLocalidad());
+        domicilio.setDepartamento(request.getDepartamento());
+        domicilio.setNumeroVivienda(request.getNumeroVivienda());
+        domicilio.setPisoDto(request.getPisoDto());
+
+
+        domicilioRepository.save(domicilio);
+
+
         Usuario empleado = new Usuario();
         empleado.setUsername(request.getUsername());
         empleado.setPassword(passwordEncoder.encode(request.getPassword()));
@@ -73,9 +101,9 @@ public class AuthService {
         empleado.setApellido(request.getApellido());
         empleado.setEmail(request.getEmail());
         empleado.setTelefono(request.getTelefono());
-      //  empleado.setFechaNacimiento(request.getFechaNacimiento());
         empleado.setRol(request.getRol());
 
+        empleado.setDomicilio(domicilio);
 
          usuarioRepository.save(empleado);
 
@@ -83,6 +111,51 @@ public class AuthService {
                 .token(jwtService.getToken(empleado))
                 .build();
     }
+
+    public AuthResponse actualizarEmpleado(RegisterRequest request, Long empleadoId) {
+        // Obtener el empleado existente desde la base de datos
+        Optional<Usuario> optionalEmpleado = usuarioRepository.findById(empleadoId);
+
+        if (optionalEmpleado.isPresent()) {
+            Usuario empleado = optionalEmpleado.get();
+
+            // Actualizar los campos del empleado con la información proporcionada en la solicitud
+            empleado.setUsername(request.getUsername());
+            empleado.setNombre(request.getNombre());
+            empleado.setApellido(request.getApellido());
+            empleado.setEmail(request.getEmail());
+            empleado.setTelefono(request.getTelefono());
+            empleado.setRol(request.getRol());
+
+            // Obtener el domicilio asociado al empleado
+            Domicilio domicilio = empleado.getDomicilio();
+
+            // Actualizar los campos del domicilio con la información proporcionada en la solicitud
+            domicilio.setCalle(request.getCalle());
+            domicilio.setNumero(request.getNumero());
+            domicilio.setCodigoPostal(request.getCodigoPostal());
+            domicilio.setLocalidad(request.getLocalidad());
+            domicilio.setDepartamento(request.getDepartamento());
+            domicilio.setNumeroVivienda(request.getNumeroVivienda());
+            domicilio.setPisoDto(request.getPisoDto());
+
+
+            // Guardar los cambios en la base de datos
+            domicilioRepository.save(domicilio);
+
+            empleado.setDomicilio(domicilio);
+
+            usuarioRepository.save(empleado);
+
+            return AuthResponse.builder()
+                    .token(jwtService.getToken(empleado))
+                    .build();
+        } else {
+            // Manejar el caso en que no se encuentre el empleado con el ID proporcionado
+            throw new UsernameNotFoundException("Empleado no encontrado con ID: " + empleadoId);
+        }
+    }
+
 
 
     @PostConstruct

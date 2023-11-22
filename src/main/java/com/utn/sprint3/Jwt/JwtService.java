@@ -1,5 +1,6 @@
 package com.utn.sprint3.Jwt;
 
+import com.utn.sprint3.entidades.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -20,7 +21,10 @@ public class JwtService {
     private static final String SECRET_KEY="586E3272357538782F413F4428472B4B6250655368566B597033733676397924";
 
     public String getToken(UserDetails user) {
-        return getToken(new HashMap<>(), user);
+        Map<String, Object> claims = new HashMap<>();
+        // Agrega el ID del usuario al payload del token
+        claims.put("id", ((Usuario) user).getUserId());
+        return getToken(claims, user);
     }
 
     private String getToken(Map<String,Object> extraClaims, UserDetails user) {

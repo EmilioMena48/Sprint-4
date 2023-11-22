@@ -21,4 +21,9 @@ public class AdminController {
         return ResponseEntity.ok(authService.crearEmpleado(request));
     }
 
+    @PutMapping("/updateEmpleado/{id}")
+    public ResponseEntity<AuthResponse> updateEmpleado(@RequestBody RegisterRequest request, @PathVariable Long id) {
+        return ResponseEntity.ok(authService.actualizarEmpleado(request, id));
+    }
+
 }

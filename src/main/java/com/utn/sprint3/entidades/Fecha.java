@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 
@@ -18,10 +20,12 @@ import java.util.Date;
 @AllArgsConstructor
 public class Fecha extends Base{
 
-    @Column(name = "fecha_alta")
+    @CreationTimestamp
+    @Column(name = "fecha_alta", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;
 
+    @UpdateTimestamp
     @Column(name = "fecha_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;

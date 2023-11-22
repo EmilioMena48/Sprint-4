@@ -19,6 +19,7 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
+                                            // El filtro se ejecuta solo una vez por solicitud.
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;

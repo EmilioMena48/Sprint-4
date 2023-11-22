@@ -23,7 +23,7 @@ public class DomicilioServiceImpl extends BaseServiceImpl<Domicilio, Long> imple
         super(baseRepository);
     }
 
-    @Override
+   /* @Override
     public List<Domicilio> searchJPQLnombrado(String filtro) throws Exception {
         try {
             List<Domicilio> domicilios = domicilioRepository.search(filtro);
@@ -41,5 +41,5 @@ public class DomicilioServiceImpl extends BaseServiceImpl<Domicilio, Long> imple
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-    }
+    }*/
 }
